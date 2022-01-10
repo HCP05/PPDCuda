@@ -5,7 +5,6 @@ extern "C" {
 }
 
 #include <stdio.h>
-#include <stdlib.h>
 //t
 cudaError_t addWithCuda(int *c, const int *a, const int *b, unsigned int size);
 
@@ -18,7 +17,7 @@ __global__ void addKernel(int *c, const int *a, const int *b)
 int main()
 {
 	BYTE *text1;
-	text1 = (BYTE*)malloc(20 * sizeof(BYTE));
+	text1 = new BYTE[20];
 	strncpy((char*)text1, "asd", 4);
 
 	BYTE buf[SHA256_BLOCK_SIZE];
@@ -34,7 +33,7 @@ int main()
 	}
 	printf("\n");
 
-	free(text1);
+	delete text1;
 
     return 0;
 
